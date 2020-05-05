@@ -1,0 +1,6 @@
+﻿set(BINARY "seadp_client")
+aux_source_directory("." SRC_FILES)
+link_directories(${CMAKEDEMO_BINARY_DIR}/bbr)
+set(LIBS "bbrcc")
+add_library(${BINARY} STATIC ${SRC_FILES})
+target_link_libraries(${BINARY} ${LIBS})

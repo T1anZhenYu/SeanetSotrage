@@ -1,0 +1,8 @@
+﻿set(BINARY "bbrcc")
+aux_source_directory("." SRC_FILES) 
+aux_source_directory("common" SRC_FILES_TEMP) 
+list(APPEND SRC_FILES ${SRC_FILES_TEMP})
+aux_source_directory("common/platform/posix" SRC_FILES) 
+list(APPEND SRC_FILES ${SRC_FILES_TEMP})
+include_directories("common")
+add_library(${BINARY} STATIC ${SRC_FILES})
