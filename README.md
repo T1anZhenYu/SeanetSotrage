@@ -58,7 +58,7 @@ ninja-build install
 echo /usr/local/lib64/ > /etc/ld.so.conf.d/dpdk-x86_64.conf
 ldconfig
 ```
-
+echo /usr/local/lib/x86_64-linux-gnu/ > /etc/ld.so.conf.d/dpdk-x86_64.conf
 
 ### Generate CMake
 Out of source build is recommended.
@@ -66,7 +66,7 @@ Out of source build is recommended.
 cd <path-to-source>
 mkdir build
 cd build
-cmake -G "Ninja"  -DCMAKE_BUILD_TYPE=<type> ../
+cmake -G "Ninja"  -DCMAKE_BUILD_TYPE="Debug" ../
 ```
 "\<type\>" can be "Debug", "Release", "RelWithDebInfo" or "MinSizeRel".
 ```
@@ -80,3 +80,4 @@ For Ninja
 ```bash
 ninja-build
 ```
+./main/dpdk-test -c 0xfff -n 4 -- -p 3

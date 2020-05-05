@@ -179,7 +179,7 @@ int fs_io_loop(__attribute__((unused)) void *arg)
       WRITE_LOG("%s:%d bucket = %08x\n", __FILE__, __LINE__, bucket);
       // WRITE_LOG("\n");
       // Enter different processing flow according to io type
-      if (a_chunk_msg_desc->io_type == REQUEST_IO_WRITE)
+      if (a_chunk_msg_desc->io_type == REQUEST_IO_WRITE) 
       {
         ret = cs_two_update_with_lru_in_write_by_data(
             conf->cs_two, conf_worker->cs_two, bucket, a_chunk_msg_desc->chunk,

@@ -198,6 +198,8 @@ static inline void push_chunk_to_other_core(
     rte_memcpy(msg->chunk_eid,
                cs->hash_table[bucket].entry[tab].chunk_info->chunk_eid,
                EID_LEN_HEX + 1);
+               ol type 标识数据包（写如文件系统之前 lru放到dram  再读的时候先找dram看一下 加io为read再去fs再找    请求包  
+               有限
     msg->io_type = REQUEST_IO_WRITE;
     if (rte_ring_enqueue(shm_ring_queue, msg) < 0)
     {

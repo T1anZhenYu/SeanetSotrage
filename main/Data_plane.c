@@ -213,7 +213,8 @@ int seanet_packet_process_loop(__attribute__((unused)) void *arg)
     // get a notify message from Dispatch core and process it.
     // update hash table for write operation
     // or prepare the data packet to send to user
-    if (rte_ring_dequeue(conf->recv_ring, (void **)&mbuf) == 0)
+    if (rte_ring_dequeue(conf->recv_ring, (void **)&mbuf) == 0)  
+   
     {
       printf("[LCORE_%u] the worker core has received a packet\n", lcore_id);
       if (mbuf->ol_flags == TYPE_DATA)
@@ -315,7 +316,7 @@ int seanet_packet_process_loop(__attribute__((unused)) void *arg)
           conf->stats.int_dram_hit++;
           rte_pktmbuf_free(mbuf);
         }
-      }
+      } 
       else if (mbuf->ol_flags == TYPE_SEADP_CLIENT)
       {
           //seadp_process_packets(seadp_ptr,mbuf);  
@@ -337,6 +338,11 @@ int seanet_packet_process_loop(__attribute__((unused)) void *arg)
           printf("##################CHUNK RECOVERY SUCCEES!\n");
         rte_pktmbuf_free(mbuf);
       }
+      else if (mbuf->ol_flags == TYPE_RAWSOCKET)   //廉文瀚定义  解包时候给了ol  我们额外加一种  把eid拿出来 调用seadp——client的一些接口（通过eid）拿数据
+      {
+        printf("我也不知道该说什么/n/n  反正我worker啥都没干就是了/n/n");
+      }
+
     }
   }
 }

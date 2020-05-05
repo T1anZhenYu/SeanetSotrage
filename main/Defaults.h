@@ -103,9 +103,9 @@ cores
 #define TYPE_REQ 1
 #define TYPE_RECOVERY 2
 #define TYPE_SEADP_CLIENT 3 // for seadp client
-#define TYPE_RAW_EID 5 // rawsocket send eid to server
+#define TYPE_RAWSOCKET 4  //廉文瀚增
 #define SEANET_PROT 0x99
-#define SEADP_PROT 0x02 // 2
+#define SEADP_PROT 0x01  // 1
 #define UDP_PROT 0x11
 #define MOB_EVENT_SRC_PORT 10000
 #define MOB_EVENT_DST_PORT 9000
@@ -164,8 +164,8 @@ cores
 #define BURST_TX_DRAIN_US 100
 
 /* Big-endian EtherType fields */
-#define ETHER_TYPE_IPv4_BE 0x0008 /**< IPv4 Protocol. */
-#define ETHER_TYPE_IPv6_BE 0xDD86 /**< IPv6 Protocol. */
+#define ETHER_TYPE_IPv4_BE 0x0800 /**< IPv4 Protocol. */      //廉文瀚改动 0x0008->0x0800
+#define ETHER_TYPE_IPv6_BE 0x86DD /**< IPv6 Protocol. */      //廉文瀚改动 0xDD86->0x86DD
 
 #define SEANET_DEFAULT_PROTOCOL 0x0099 /**< SEANET Protocol. */
 
@@ -214,7 +214,7 @@ cores
 
 #define BITMAP_WORD 8
 #define BITMAP_BYTE_LEN 210
-
+ 
 struct chunk_msg_desc {
   uint8_t io_type;
   char chunk_eid[41];
